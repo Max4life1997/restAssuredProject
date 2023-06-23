@@ -1,0 +1,57 @@
+plugins {
+    id 'java-library'
+    id('io.qameta.allure') version '2.11.2'
+}
+
+group 'guru.qa'
+version '1.0-SNAPSHOT'
+
+allure{
+    report{
+        version { // секция репорта
+            version.set("2.20.1")
+        }
+        adapter{ //отвечает за появление папки build/allure-results
+            aspectjWeaver.set(true) // обработка аннатации
+            frameworks{
+                junit5{
+                    adapterVersion.set("2.20.1") //версий интеграции фреймворка и Allure
+                }
+            }
+        }
+    }
+}
+
+
+// Репазиторий с которого будет осуществляться установка зависимостей
+repositories {
+    mavenCentral()
+}
+
+// Указание кодировки для избежания ошибок с ней
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+// Версии
+def jupiterVersion = "5.9.3"
+def selenideVersion = "6.15.0"
+def slfjVersion = "2.0.7"
+def allureSelenideVersion = "2.22.2"
+
+
+// Зависимости
+dependencies {
+    testImplementation(
+            "com.codeborne:selenide:$selenideVersion",
+            "org.junit.jupiter:junit-jupiter:$jupiterVersion",
+            "org.slf4j:slf4j-simple:$slfjVersion",
+            "io.qameta.allure:allure-selenide:$allureSelenideVersion"
+    )
+}
+
+// Указание gradle использовать junit5
+test {
+    useJUnitPlatform()
+    systemProperties(System.getProperties())
+}
