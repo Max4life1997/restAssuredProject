@@ -1,19 +1,67 @@
 package pojo;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
-@AllArgsConstructor
-@Getter
-@Setter
 public class UserData {
-    public int id;
-    public String email;
-    public String first_name;
-    public String last_name;
-    public String avatar;
+    private int id;
+    private String email;
+    private String firstName;
+    private String lastName;
+    private String avatar;
+
+
+    public UserData(int id,
+                    String email,
+                    String firstName,
+                    String last_name,
+                    String avatar) {
+        this.id = id;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.avatar = avatar;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
 }
+
+
 
 
